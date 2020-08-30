@@ -1,11 +1,12 @@
 import React from "react";
 import Todo from "./Todo.js";
+import TodoForm from "./TodoForm.js";
 
 export default class TodoList extends React.Component {
   constructor(props) {
     super(props);
 
-    // initial todos
+    // initial todo list
     this.state = {
       todos: [
         {
@@ -24,17 +25,34 @@ export default class TodoList extends React.Component {
           description: "I have to improve!.",
         },
       ],
+      nextId: 3,
     };
+
+    // method binding
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   // event handler, this one is passed as a prop to each Todo component, this way, each child (Todo) has a way to tell
   // their parent (TodoList) to re-render them with new props.
+  // It removes a Todo from the page.
   handleDelete(id) {
     const newTodos = this.state.todos.filter((todo) => {
       return todo.id !== id;
     });
     this.setState({
       todos: newTodos,
+    });
+  }
+
+  // Just like the above event handler, this one is passed to a child component (TodoForm).
+  // It receives form data from a child component and updates state based on that data.
+  // It adds a new todo to the page.
+  handleAdd(newTodo) {
+    const newTodos = [...this.state.todos];
+    newTodos.push({ id: this.state.nextId, ...newTodo });
+    this.setState({
+      todos: newTodos,
+      nextId: this.state.nextId + 1,
     });
   }
 
@@ -49,6 +67,11 @@ export default class TodoList extends React.Component {
         />
       );
     });
-    return <main>{todos}</main>;
+    return (
+      <div>
+        <TodoForm handleAdd={this.handleAdd} />
+        <main>{todos}</main>
+      </div>
+    );
   }
 }
