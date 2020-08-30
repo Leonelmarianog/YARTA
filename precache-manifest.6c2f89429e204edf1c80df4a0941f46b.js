@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "75f85fffc66eb15378a86fba5d6efa48",
+    "revision": "145d9f563f9943b59cab3731e34c6d7b",
     "url": "/YARTA/index.html"
   },
   {
-    "revision": "d37f2f3f1a74012327a2",
+    "revision": "757882060c4f9332abe6",
     "url": "/YARTA/static/css/main.cacef73e.chunk.css"
   },
   {
-    "revision": "8704e8210b7327e9ac7d",
-    "url": "/YARTA/static/js/2.59b62553.chunk.js"
+    "revision": "b03f34b2afa65e589ef6",
+    "url": "/YARTA/static/js/2.2b3ec384.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/YARTA/static/js/2.59b62553.chunk.js.LICENSE.txt"
+    "url": "/YARTA/static/js/2.2b3ec384.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d37f2f3f1a74012327a2",
-    "url": "/YARTA/static/js/main.42899987.chunk.js"
+    "revision": "757882060c4f9332abe6",
+    "url": "/YARTA/static/js/main.596b308e.chunk.js"
   },
   {
     "revision": "71e16867aa5cbc6a7d7d",

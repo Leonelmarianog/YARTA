@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/YARTA/precache-manifest.b3a85e70fc78a65ac0bae62a2fe95ae0.js"
+  "/YARTA/precache-manifest.6c2f89429e204edf1c80df4a0941f46b.js"
 );
 
 self.addEventListener('message', (event) => {
