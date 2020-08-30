@@ -5,6 +5,11 @@
   margin: 10px;
 }
 
-/* .todo p {
-  word-wrap: break-word;
-} */
+.completed {
+  color: grey;
+}
+
+.completed h3,
+.completed p {
+  text-decoration: line-through;
+}
