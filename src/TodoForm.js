@@ -19,8 +19,8 @@ export default class TodoForm extends React.Component {
     event.preventDefault();
     // form validation
     if (
-      /[^A-Za-z0-9]+/gi.test(this.state.title) ||
-      /[^A-Za-z0-9]+/gi.test(this.state.description)
+      /[^A-Za-z0-9 ]+/gi.test(this.state.title) ||
+      /[^A-Za-z0-9 ]+/gi.test(this.state.description)
     ) {
       return;
     }
@@ -39,8 +39,8 @@ export default class TodoForm extends React.Component {
     // if input information is not valid, I want to render some error message.
     let error = null;
     if (
-      /[^A-Za-z0-9]+/gi.test(this.state.title) ||
-      /[^A-Za-z0-9]+/gi.test(this.state.description)
+      /[^A-Za-z0-9 ]+/gi.test(this.state.title) ||
+      /[^A-Za-z0-9 ]+/gi.test(this.state.description)
     ) {
       error = (
         <p style={{ color: "crimson" }}>Only letters and numbers allowed!.</p>
