@@ -13,16 +13,22 @@ export default class TodoList extends React.Component {
           id: 0,
           title: "Build a vanilla JS App",
           description: "Gotta practice the basics.",
+          isComplete: false,
+          isFormVisible: false,
         },
         {
           id: 1,
           title: "Build a React App",
           description: "Practice makes perfect!.",
+          isComplete: false,
+          isFormVisible: false,
         },
         {
           id: 2,
           title: "Study more",
           description: "I have to improve!.",
+          isComplete: false,
+          isFormVisible: false,
         },
       ],
       nextId: 3,
@@ -72,6 +78,22 @@ export default class TodoList extends React.Component {
     });
   }
 
+  // Event handler to handle the state of each todo.
+  // It receives the id of a todo to identify it and a key that can be either "isComplete" or "isFormVisible"
+  // It updates the state of a todo to be either completed/incompleted or to show/hide a form.
+  handleToggle(id, key) {
+    const todos = this.state.todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          [key]: !todo[key],
+        };
+      }
+      return todo;
+    });
+    this.setState({ todos: todos });
+  }
+
   render() {
     const todos = this.state.todos.map((todo) => {
       return (
@@ -79,8 +101,12 @@ export default class TodoList extends React.Component {
           key={todo.id}
           title={todo.title}
           description={todo.description}
+          isComplete={todo.isComplete}
+          isFormVisible={todo.isFormVisible}
           handleDelete={this.handleDelete.bind(this, todo.id)} // method binding and also pass the id of each todo to be able to tell which one to delete
           handleEdit={this.handleEdit.bind(this, todo.id)} // method binding and also pass the id of each todo to be able to tell which one to edit
+          handleComplete={this.handleToggle.bind(this, todo.id, "isComplete")}
+          handleForm={this.handleToggle.bind(this, todo.id, "isFormVisible")}
         />
       );
     });
