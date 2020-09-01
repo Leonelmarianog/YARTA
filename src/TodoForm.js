@@ -5,6 +5,8 @@ export default class TodoForm extends React.Component {
     super(props);
 
     // initial state of inputs
+    // If this component is used by the TodoList, the state is set to a default prop.
+    // Otherwise if this component is used by a Todo, then the state is set with props passed to said Todo.
     this.state = {
       title: this.props.title,
       description: this.props.description,
@@ -15,16 +17,16 @@ export default class TodoForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // Event handler to handle the submit of the form
+  // It validates the inputs and passes state to a parent component.
   handleSubmit(event) {
     event.preventDefault();
-    // form validation
     if (
       /[^A-Za-z0-9 ]+/gi.test(this.state.title) ||
       /[^A-Za-z0-9 ]+/gi.test(this.state.description)
     ) {
       return;
     }
-    // pass state (form data) to parent component
     if (this.props.handleEdit) {
       this.props.handleEdit(this.state);
     } else {
@@ -32,7 +34,8 @@ export default class TodoForm extends React.Component {
     }
   }
 
-  // input state tracking
+  // Event handler to keep track of the input data.
+  // This allows React to keep track of the state of the inputs.
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
@@ -40,6 +43,7 @@ export default class TodoForm extends React.Component {
   }
 
   render() {
+    const buttonText = this.props.handleEdit ? "Edit Todo" : "Add Todo";
     // if input information is not valid, I want to render some error message.
     let error = null;
     if (
@@ -50,7 +54,6 @@ export default class TodoForm extends React.Component {
         <p style={{ color: "crimson" }}>Only letters and numbers allowed!.</p>
       );
     }
-    const buttonText = this.props.handleEdit ? "Edit Todo" : "Add Todo";
     return (
       <form onSubmit={this.handleSubmit}>
         <label>

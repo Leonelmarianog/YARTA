@@ -6,7 +6,10 @@ export default class TodoList extends React.Component {
   constructor(props) {
     super(props);
 
-    // initial todo list
+    // initial state of the todos
+    // Each todo has an identifier, a title, and a description.
+    // The key "isComplete" is used to add/remove a style from the todo to show it as complete/incomplete.
+    // The key "isFormVisible" is used to show/hide an edit form on each todo.
     this.state = {
       todos: [
         {
@@ -38,9 +41,11 @@ export default class TodoList extends React.Component {
     this.handleAdd = this.handleAdd.bind(this);
   }
 
-  // event handler, this one is passed as a prop to each Todo component, this way, each child (Todo) has a way to tell
-  // their parent (TodoList) to re-render them with new props.
-  // It removes a Todo from the page.
+  // These event handlers are passed down to child components as props. Each child will call these event handlers and pass
+  // them required data for this component to be able to update state and re-render their childs with new props.
+
+  // Event handler to delete a todo.
+  // it receives the id of a todo to identify it and remove it from state.
   handleDelete(id) {
     const newTodos = this.state.todos.filter((todo) => {
       return todo.id !== id;
@@ -50,9 +55,8 @@ export default class TodoList extends React.Component {
     });
   }
 
-  // Just like the above event handler, this one is passed to a child component (TodoForm).
-  // It receives form data from a child component and updates state based on that data.
-  // It adds a new todo to the page.
+  // Event handler to add a new todo.
+  // It receives the data of a new todo and adds it to state.
   handleAdd(newTodo) {
     const newTodos = [...this.state.todos];
     newTodos.push({ id: this.state.nextId, ...newTodo });
@@ -62,7 +66,9 @@ export default class TodoList extends React.Component {
     });
   }
 
-  // event handler to edit a todo, It receives an id and the updated data of a todo.
+  // Event handler to edit a todo.
+  // It receives the id of a todo to identify it and the modified data of said todo.
+  // It updates state with the new data.
   handleEdit(id, editedTodo) {
     const updatedTodos = this.state.todos.map((todo) => {
       if (todo.id === id) {
