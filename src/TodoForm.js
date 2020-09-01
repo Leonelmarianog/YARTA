@@ -6,8 +6,8 @@ export default class TodoForm extends React.Component {
 
     // initial state of inputs
     this.state = {
-      title: "",
-      description: "",
+      title: this.props.title,
+      description: this.props.description,
     };
 
     // method binding
@@ -25,7 +25,11 @@ export default class TodoForm extends React.Component {
       return;
     }
     // pass state (form data) to parent component
-    this.props.handleAdd(this.state);
+    if (this.props.handleEdit) {
+      this.props.handleEdit(this.state);
+    } else {
+      this.props.handleAdd(this.state);
+    }
   }
 
   // input state tracking
@@ -46,6 +50,7 @@ export default class TodoForm extends React.Component {
         <p style={{ color: "crimson" }}>Only letters and numbers allowed!.</p>
       );
     }
+    const buttonText = this.props.handleEdit ? "Edit Todo" : "Add Todo";
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -68,9 +73,14 @@ export default class TodoForm extends React.Component {
             required
           />
         </label>
-        <button type="submit">Add Todo</button>
+        <button type="submit">{buttonText}</button>
         {error}
       </form>
     );
   }
 }
+
+TodoForm.defaultProps = {
+  title: "",
+  description: "",
+};

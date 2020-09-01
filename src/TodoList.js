@@ -56,6 +56,22 @@ export default class TodoList extends React.Component {
     });
   }
 
+  // event handler to edit a todo, It receives an id and the updated data of a todo.
+  handleEdit(id, editedTodo) {
+    const updatedTodos = this.state.todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          id,
+          ...editedTodo,
+        };
+      }
+      return todo;
+    });
+    this.setState({
+      todos: updatedTodos,
+    });
+  }
+
   render() {
     const todos = this.state.todos.map((todo) => {
       return (
@@ -64,6 +80,7 @@ export default class TodoList extends React.Component {
           title={todo.title}
           description={todo.description}
           handleDelete={this.handleDelete.bind(this, todo.id)} // method binding and also pass the id of each todo to be able to tell which one to delete
+          handleEdit={this.handleEdit.bind(this, todo.id)} // method binding and also pass the id of each todo to be able to tell which one to edit
         />
       );
     });
