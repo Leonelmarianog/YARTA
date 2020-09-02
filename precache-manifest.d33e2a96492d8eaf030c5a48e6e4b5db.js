@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "55ae18c6ff5ed16290c45b68cd2b1f8e",
+    "revision": "3be101b261002bef00a485ae88a43c69",
     "url": "/YARTA/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/YARTA/static/css/2.240f97b7.chunk.css"
   },
   {
-    "revision": "261c3100c845c816a741",
+    "revision": "b6ee513aff0e2a10a694",
     "url": "/YARTA/static/css/main.2f651918.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/YARTA/static/js/2.a2f93f06.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "261c3100c845c816a741",
-    "url": "/YARTA/static/js/main.09995a34.chunk.js"
+    "revision": "b6ee513aff0e2a10a694",
+    "url": "/YARTA/static/js/main.3e01726f.chunk.js"
   },
   {
     "revision": "71e16867aa5cbc6a7d7d",

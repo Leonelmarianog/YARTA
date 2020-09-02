@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/YARTA/static/css/main.2f651918.chunk.css",
-    "main.js": "/YARTA/static/js/main.09995a34.chunk.js",
-    "main.js.map": "/YARTA/static/js/main.09995a34.chunk.js.map",
+    "main.js": "/YARTA/static/js/main.3e01726f.chunk.js",
+    "main.js.map": "/YARTA/static/js/main.3e01726f.chunk.js.map",
     "runtime-main.js": "/YARTA/static/js/runtime-main.24a30257.js",
     "runtime-main.js.map": "/YARTA/static/js/runtime-main.24a30257.js.map",
     "static/css/2.240f97b7.chunk.css": "/YARTA/static/css/2.240f97b7.chunk.css",
     "static/js/2.a2f93f06.chunk.js": "/YARTA/static/js/2.a2f93f06.chunk.js",
     "static/js/2.a2f93f06.chunk.js.map": "/YARTA/static/js/2.a2f93f06.chunk.js.map",
     "index.html": "/YARTA/index.html",
-    "precache-manifest.dc2ef05bf51e0ea0c3bae0775761da8d.js": "/YARTA/precache-manifest.dc2ef05bf51e0ea0c3bae0775761da8d.js",
+    "precache-manifest.d33e2a96492d8eaf030c5a48e6e4b5db.js": "/YARTA/precache-manifest.d33e2a96492d8eaf030c5a48e6e4b5db.js",
     "service-worker.js": "/YARTA/service-worker.js",
     "static/css/2.240f97b7.chunk.css.map": "/YARTA/static/css/2.240f97b7.chunk.css.map",
     "static/css/main.2f651918.chunk.css.map": "/YARTA/static/css/main.2f651918.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.240f97b7.chunk.css",
     "static/js/2.a2f93f06.chunk.js",
     "static/css/main.2f651918.chunk.css",
-    "static/js/main.09995a34.chunk.js"
+    "static/js/main.3e01726f.chunk.js"
   ]
 }
