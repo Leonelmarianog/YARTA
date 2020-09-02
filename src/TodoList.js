@@ -11,30 +11,8 @@ export default class TodoList extends React.Component {
     // The key "isComplete" is used to add/remove a style from the todo to show it as complete/incomplete.
     // The key "isFormVisible" is used to show/hide an edit form on each todo.
     this.state = {
-      todos: [
-        {
-          id: 0,
-          title: "Build a vanilla JS App",
-          description: "Gotta practice the basics.",
-          isComplete: false,
-          isFormVisible: false,
-        },
-        {
-          id: 1,
-          title: "Build a React App",
-          description: "Practice makes perfect!.",
-          isComplete: false,
-          isFormVisible: false,
-        },
-        {
-          id: 2,
-          title: "Study more",
-          description: "I have to improve!.",
-          isComplete: false,
-          isFormVisible: false,
-        },
-      ],
-      nextId: 3,
+      todos: this.props.todos,
+      nextId: this.props.nextId,
     };
 
     // method binding
@@ -50,9 +28,7 @@ export default class TodoList extends React.Component {
     const newTodos = this.state.todos.filter((todo) => {
       return todo.id !== id;
     });
-    this.setState({
-      todos: newTodos,
-    });
+    this.setState({ todos: newTodos }, this.saveTodos);
   }
 
   // Event handler to add a new todo.
@@ -60,10 +36,13 @@ export default class TodoList extends React.Component {
   handleAdd(newTodo) {
     const newTodos = [...this.state.todos];
     newTodos.push({ id: this.state.nextId, ...newTodo });
-    this.setState({
-      todos: newTodos,
-      nextId: this.state.nextId + 1,
-    });
+    this.setState(
+      {
+        todos: newTodos,
+        nextId: this.state.nextId + 1,
+      },
+      this.saveTodos
+    );
   }
 
   // Event handler to edit a todo.
@@ -79,9 +58,7 @@ export default class TodoList extends React.Component {
       }
       return todo;
     });
-    this.setState({
-      todos: updatedTodos,
-    });
+    this.setState({ todos: updatedTodos }, this.saveTodos);
   }
 
   // Event handler to handle the state of each todo.
@@ -97,7 +74,27 @@ export default class TodoList extends React.Component {
       }
       return todo;
     });
-    this.setState({ todos: todos });
+    this.setState({ todos: todos }, this.saveTodos);
+  }
+
+  // I need to  create this function so I can call it AFTER I set state.
+  // Remember that this.setState is asynchronous.
+  saveTodos() {
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    localStorage.setItem("nextId", this.state.nextId);
+  }
+
+  // Everytime this component is mounted, I want to check if there are todos to load.
+  // If there are todos, then I load them, if not, I clear local storage and exit.
+  // Why clear localStorage? Because when there are no todos, all that remains inside
+  // localStorage is an empty array and an identifier that I don't need.
+  componentDidMount() {
+    const savedTodos = JSON.parse(localStorage.getItem("todos"));
+    const savedId = JSON.parse(localStorage.getItem("nextId"));
+    if (savedTodos === null || savedTodos.length === 0) {
+      return localStorage.clear();
+    }
+    this.setState({ todos: savedTodos, nextId: savedId });
   }
 
   render() {
@@ -124,3 +121,31 @@ export default class TodoList extends React.Component {
     );
   }
 }
+
+// These props are used when there are no todos to load from localStorage
+TodoList.defaultProps = {
+  todos: [
+    {
+      id: 0,
+      title: "Build a vanilla JS App",
+      description: "Gotta practice the basics.",
+      isComplete: false,
+      isFormVisible: false,
+    },
+    {
+      id: 1,
+      title: "Build a React App",
+      description: "Practice makes perfect!.",
+      isComplete: false,
+      isFormVisible: false,
+    },
+    {
+      id: 2,
+      title: "Study more",
+      description: "I have to improve!.",
+      isComplete: false,
+      isFormVisible: false,
+    },
+  ],
+  nextId: 3,
+};
