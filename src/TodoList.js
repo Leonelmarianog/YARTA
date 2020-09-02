@@ -117,9 +117,9 @@ export default class TodoList extends React.Component {
       );
     });
     return (
-      <div>
+      <div className="container is-fluid">
         <TodoForm handleAdd={this.handleAdd} />
-        <main>{todos}</main>
+        <main className="my-6">{todos}</main>
       </div>
     );
   }

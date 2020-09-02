@@ -43,7 +43,8 @@ export default class TodoForm extends React.Component {
   }
 
   render() {
-    const buttonText = this.props.handleEdit ? "Edit Todo" : "Add Todo";
+    const buttonText = this.props.handleEdit ? "Save" : "Add Todo";
+    const buttonColor = this.props.handleEdit ? "is-success" : "is-black";
     // if input information is not valid, I want to render some error message.
     let error = null;
     if (
@@ -51,32 +52,64 @@ export default class TodoForm extends React.Component {
       /[^A-Za-z0-9 !.,]+/.test(this.state.description)
     ) {
       error = (
-        <p style={{ color: "crimson" }}>Only letters and numbers allowed!.</p>
+        <div className="columns is-mobile mt-5">
+          <div className="column is-half is-offset-one-quarter">
+            <div className="notification is-danger">
+              <p className="help is-size-5 is-size-6-mobile has-text-centered">
+                Only letters and numbers allowed!
+              </p>
+            </div>
+          </div>
+        </div>
       );
     }
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Todo:
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={this.handleChange}
-            required
-          />
-        </label>
-        <label>
-          Description:
-          <input
-            type="text"
-            name="description"
-            value={this.state.description}
-            onChange={this.handleChange}
-            required
-          />
-        </label>
-        <button type="submit">{buttonText}</button>
+      <form onSubmit={this.handleSubmit} className="mt-4">
+        <div className="field is-horizontal">
+          <div className="field-body">
+            <div className="field-label is-normal">
+              <label className="label has-text-white">Title</label>
+            </div>
+
+            <div className="field">
+              <div className="control">
+                <input
+                  className="input"
+                  type="text"
+                  name="title"
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="field-label is-normal">
+              <label className="label has-text-white">Description</label>
+            </div>
+
+            <div className="field">
+              <div className="control">
+                <input
+                  className="input"
+                  type="text"
+                  name="description"
+                  value={this.state.description}
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="field is-grouped is-grouped-centered">
+              <div className="control">
+                <button type="submit" className={`button ${buttonColor}`}>
+                  {buttonText}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         {error}
       </form>
     );
