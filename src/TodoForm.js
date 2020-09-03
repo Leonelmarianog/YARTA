@@ -67,6 +67,12 @@ export default class TodoForm extends React.Component {
       this.props.handleEdit(this.state.fields);
     } else {
       this.props.handleAdd(this.state.fields);
+      this.setState({
+        fields: {
+          title: "",
+          description: "",
+        },
+      });
     }
   }
 
