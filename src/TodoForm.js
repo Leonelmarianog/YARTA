@@ -8,8 +8,11 @@ export default class TodoForm extends React.Component {
     // If this component is used by the TodoList, the state is set to a default prop.
     // Otherwise if this component is used by a Todo, then the state is set with props passed to said Todo.
     this.state = {
-      title: this.props.title,
-      description: this.props.description,
+      fields: {
+        title: this.props.title,
+        description: this.props.description,
+      },
+      errors: {},
     };
 
     // method binding
@@ -17,20 +20,53 @@ export default class TodoForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // Input validation
+  handleValidation() {
+    let fields = this.state.fields;
+    let errors = {};
+    let formIsValid = true;
+
+    // title validation
+    if (!fields.title) {
+      formIsValid = false;
+      errors.title = "The Title field can't be empty";
+    }
+
+    if (/[^A-Za-z0-9 ]+/.test(fields.title)) {
+      formIsValid = false;
+      errors.title = "Only letters and numbers allowed";
+    }
+
+    // description validation
+    if (!fields.description) {
+      formIsValid = false;
+      errors.description = "The description field can't be empty";
+    }
+
+    if (/[^A-Za-z0-9 ]+/.test(fields.description)) {
+      formIsValid = false;
+      errors.description = "Only letters and numbers allowed";
+    }
+
+    this.setState({ errors });
+    return formIsValid;
+  }
+
   // Event handler to handle the submit of the form
   // It validates the inputs and passes state to a parent component.
   handleSubmit(event) {
     event.preventDefault();
-    if (
-      /[^A-Za-z0-9 !.,]+/.test(this.state.title) ||
-      /[^A-Za-z0-9 !.,]+/.test(this.state.description)
-    ) {
-      return;
-    }
+
+    const isValid = this.handleValidation();
+    if (!isValid) return;
+
+    // clear errors
+    this.setState({ errors: {} });
+
     if (this.props.handleEdit) {
-      this.props.handleEdit(this.state);
+      this.props.handleEdit(this.state.fields);
     } else {
-      this.props.handleAdd(this.state);
+      this.props.handleAdd(this.state.fields);
     }
   }
 
@@ -38,31 +74,28 @@ export default class TodoForm extends React.Component {
   // This allows React to keep track of the state of the inputs.
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value,
+      fields: {
+        ...this.state.fields,
+        [event.target.name]: event.target.value,
+      },
     });
   }
 
   render() {
     const buttonText = this.props.handleEdit ? "Save" : "Add Todo";
     const buttonColor = this.props.handleEdit ? "is-success" : "is-black";
-    // if input information is not valid, I want to render some error message.
-    let error = null;
-    if (
-      /[^A-Za-z0-9 !.,]+/.test(this.state.title) ||
-      /[^A-Za-z0-9 !.,]+/.test(this.state.description)
-    ) {
-      error = (
-        <div className="columns is-mobile mt-5">
-          <div className="column is-half is-offset-one-quarter">
-            <div className="notification is-danger">
-              <p className="help is-size-5 is-size-6-mobile has-text-centered">
-                Only letters and numbers allowed!
-              </p>
-            </div>
-          </div>
-        </div>
-      );
-    }
+    const titleFocus = this.state.errors.title ? "is-danger" : "";
+    const titleError = this.state.errors.title ? (
+      <p className="help is-danger is-size-5 is-size-6-tablet is-size-6-mobile has-text-centered">
+        {this.state.errors.title}
+      </p>
+    ) : null;
+    const descriptionFocus = this.state.errors.description ? "is-danger" : "";
+    const descriptionError = this.state.errors.description ? (
+      <p className="help is-danger is-size-5 is-size-6-tablet is-size-6-mobile has-text-centered">
+        {this.state.errors.description}
+      </p>
+    ) : null;
     return (
       <form onSubmit={this.handleSubmit} className="mt-4">
         <div className="field is-horizontal">
@@ -74,14 +107,14 @@ export default class TodoForm extends React.Component {
             <div className="field">
               <div className="control">
                 <input
-                  className="input"
+                  className={`input ${titleFocus}`}
                   type="text"
                   name="title"
-                  value={this.state.title}
+                  value={this.state.fields.title}
                   onChange={this.handleChange}
-                  required
                 />
               </div>
+              {titleError}
             </div>
 
             <div className="field-label is-normal">
@@ -91,14 +124,14 @@ export default class TodoForm extends React.Component {
             <div className="field">
               <div className="control">
                 <input
-                  className="input"
+                  className={`input ${descriptionFocus}`}
                   type="text"
                   name="description"
-                  value={this.state.description}
+                  value={this.state.fields.description}
                   onChange={this.handleChange}
-                  required
                 />
               </div>
+              {descriptionError}
             </div>
 
             <div className="field is-grouped is-grouped-centered">
@@ -110,7 +143,6 @@ export default class TodoForm extends React.Component {
             </div>
           </div>
         </div>
-        {error}
       </form>
     );
   }
