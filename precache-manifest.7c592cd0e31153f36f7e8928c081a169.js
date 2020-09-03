@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3be101b261002bef00a485ae88a43c69",
+    "revision": "fcdf107cfc8f739fb25040f0a6ef7537",
     "url": "/YARTA/index.html"
   },
   {
-    "revision": "174cc25493301dbe4bb5",
+    "revision": "03688ff12417ac18d9c3",
     "url": "/YARTA/static/css/2.240f97b7.chunk.css"
   },
   {
-    "revision": "b6ee513aff0e2a10a694",
+    "revision": "52211f1e6d4cffbfc461",
     "url": "/YARTA/static/css/main.2f651918.chunk.css"
   },
   {
-    "revision": "174cc25493301dbe4bb5",
-    "url": "/YARTA/static/js/2.a2f93f06.chunk.js"
+    "revision": "03688ff12417ac18d9c3",
+    "url": "/YARTA/static/js/2.bb3f14f9.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/YARTA/static/js/2.a2f93f06.chunk.js.LICENSE.txt"
+    "url": "/YARTA/static/js/2.bb3f14f9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b6ee513aff0e2a10a694",
-    "url": "/YARTA/static/js/main.3e01726f.chunk.js"
+    "revision": "52211f1e6d4cffbfc461",
+    "url": "/YARTA/static/js/main.7b4c060d.chunk.js"
   },
   {
     "revision": "71e16867aa5cbc6a7d7d",
