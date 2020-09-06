@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fcdf107cfc8f739fb25040f0a6ef7537",
+    "revision": "d4bb6b72292f8a3188addd355f9f56ae",
     "url": "/YARTA/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/YARTA/static/css/2.240f97b7.chunk.css"
   },
   {
-    "revision": "52211f1e6d4cffbfc461",
-    "url": "/YARTA/static/css/main.2f651918.chunk.css"
+    "revision": "82e393075af224934409",
+    "url": "/YARTA/static/css/main.f43f9885.chunk.css"
   },
   {
     "revision": "03688ff12417ac18d9c3",
@@ -20,15 +20,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/YARTA/static/js/2.bb3f14f9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "52211f1e6d4cffbfc461",
-    "url": "/YARTA/static/js/main.7b4c060d.chunk.js"
+    "revision": "82e393075af224934409",
+    "url": "/YARTA/static/js/main.6c3c0cf7.chunk.js"
   },
   {
     "revision": "71e16867aa5cbc6a7d7d",
     "url": "/YARTA/static/js/runtime-main.24a30257.js"
   },
   {
-    "revision": "13f6f31cbf98f4db75fbc3adce75100a",
-    "url": "/YARTA/static/media/todo-background.13f6f31c.jpg"
+    "revision": "8c8c9b4980599d9862d2f466ec8a8cfd",
+    "url": "/YARTA/static/media/todo-background.8c8c9b49.jpg"
   }
 ]);
