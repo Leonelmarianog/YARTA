@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default class TodoForm extends React.Component {
   constructor(props) {
@@ -157,4 +158,10 @@ export default class TodoForm extends React.Component {
 TodoForm.defaultProps = {
   title: "",
   description: "",
+};
+
+TodoForm.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  handleEdit: PropTypes.func,
 };

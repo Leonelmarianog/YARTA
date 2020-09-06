@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import TodoForm from "./TodoForm.js";
 import "./Todo.css";
 
@@ -42,3 +43,14 @@ export default function Todo(props) {
     </div>
   );
 }
+
+Todo.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  isComplete: PropTypes.bool.isRequired,
+  isFormVisible: PropTypes.bool.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
+  handleComplete: PropTypes.func.isRequired,
+  handleForm: PropTypes.func.isRequired,
+};

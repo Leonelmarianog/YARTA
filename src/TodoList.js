@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Todo from "./Todo.js";
 import TodoForm from "./TodoForm.js";
 
@@ -148,4 +149,9 @@ TodoList.defaultProps = {
     },
   ],
   nextId: 3,
+};
+
+TodoList.propTypes = {
+  todos: PropTypes.array.isRequired,
+  nextId: PropTypes.number.isRequired,
 };
