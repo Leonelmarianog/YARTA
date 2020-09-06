@@ -60,6 +60,7 @@ export default class TodoList extends React.Component {
         return {
           ...todo,
           ...editedTodo,
+          isFormVisible: false,
         };
       }
       return todo;
