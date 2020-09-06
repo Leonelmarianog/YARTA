@@ -36,7 +36,12 @@ export default class TodoList extends React.Component {
   // It receives the data of a new todo and adds it to state.
   handleAdd(newTodo) {
     const newTodos = [...this.state.todos];
-    newTodos.push({ id: this.state.nextId, ...newTodo });
+    newTodos.push({
+      id: this.state.nextId,
+      ...newTodo,
+      isComplete: false,
+      isFormVisible: false,
+    });
     this.setState(
       {
         todos: newTodos,
@@ -53,7 +58,7 @@ export default class TodoList extends React.Component {
     const updatedTodos = this.state.todos.map((todo) => {
       if (todo.id === id) {
         return {
-          id,
+          ...todo,
           ...editedTodo,
         };
       }
